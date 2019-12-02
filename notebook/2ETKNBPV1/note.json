@@ -1,0 +1,141 @@
+{
+  "paragraphs": [
+    {
+      "text": "import org.apache.spark.sql.functions.avg\n//create an DataFrame using SparkSession\nval dataDF \u003d spark.createDataFrame(Seq((\"Brooke\", 20), (\"Denny\", 31), (\"Jules\", 30), (\"TD\", 35),(\"TD\",45))).toDF(\"name\", \"age\")\n//Group the same names together, aggregate their age, and compute an average\nval avgDF \u003d dataDF.groupBy(\"name\").agg(avg(\"age\"))\n\ndataDF.groupBy(\"name\").max(\"age\").show()\n// show the results of the final execution\navgDF.show()",
+      "user": "anonymous",
+      "dateUpdated": "2019-12-02 16:41:48.768",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+------+--------+\n|  name|max(age)|\n+------+--------+\n|Brooke|      20|\n| Jules|      30|\n|    TD|      45|\n| Denny|      31|\n+------+--------+\n\n+------+--------+\n|  name|avg(age)|\n+------+--------+\n|Brooke|    20.0|\n| Jules|    30.0|\n|    TD|    40.0|\n| Denny|    31.0|\n+------+--------+\n\nimport org.apache.spark.sql.functions.avg\ndataDF: org.apache.spark.sql.DataFrame \u003d [name: string, age: int]\navgDF: org.apache.spark.sql.DataFrame \u003d [name: string, avg(age): double]\n"
+          }
+        ]
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "http://a1ad8f362cff:4040/jobs/job?id\u003d27",
+            "http://a1ad8f362cff:4040/jobs/job?id\u003d28",
+            "http://a1ad8f362cff:4040/jobs/job?id\u003d29",
+            "http://a1ad8f362cff:4040/jobs/job?id\u003d30",
+            "http://a1ad8f362cff:4040/jobs/job?id\u003d31",
+            "http://a1ad8f362cff:4040/jobs/job?id\u003d32",
+            "http://a1ad8f362cff:4040/jobs/job?id\u003d33",
+            "http://a1ad8f362cff:4040/jobs/job?id\u003d34",
+            "http://a1ad8f362cff:4040/jobs/job?id\u003d35",
+            "http://a1ad8f362cff:4040/jobs/job?id\u003d36"
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "apps": [],
+      "jobName": "paragraph_1575302620828_-1843825208",
+      "id": "20191202-160340_1205566634",
+      "dateCreated": "2019-12-02 16:03:40.828",
+      "dateStarted": "2019-12-02 16:41:48.792",
+      "dateFinished": "2019-12-02 16:41:53.315",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "import org.apache.spark.sql.Row \nval someData \u003d Seq(\n  Row(8, \"bat\"),\n  Row(64, \"mouse\"),\n  Row(-27, \"horse\")\n)\n\nval someSchema \u003d List(\n  StructField(\"number\", IntegerType, true),\n  StructField(\"word\", StringType, true)\n)\n\nval someDF \u003d spark.createDataFrame(\n  spark.sparkContext.parallelize(someData),\n  StructType(someSchema)\n)\n\nsomeDF.show()",
+      "user": "anonymous",
+      "dateUpdated": "2019-12-02 16:35:44.803",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+------+-----+\n|number| word|\n+------+-----+\n|     8|  bat|\n|    64|mouse|\n|   -27|horse|\n+------+-----+\n\nimport org.apache.spark.sql.Row\nsomeData: Seq[org.apache.spark.sql.Row] \u003d List([8,bat], [64,mouse], [-27,horse])\nsomeSchema: List[org.apache.spark.sql.types.StructField] \u003d List(StructField(number,IntegerType,true), StructField(word,StringType,true))\nsomeDF: org.apache.spark.sql.DataFrame \u003d [number: int, word: string]\n"
+          }
+        ]
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "http://a1ad8f362cff:4040/jobs/job?id\u003d5",
+            "http://a1ad8f362cff:4040/jobs/job?id\u003d6"
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "apps": [],
+      "jobName": "paragraph_1575302623682_-1155624297",
+      "id": "20191202-160343_1466933808",
+      "dateCreated": "2019-12-02 16:03:43.682",
+      "dateStarted": "2019-12-02 16:35:44.823",
+      "dateFinished": "2019-12-02 16:35:47.902",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1575302701555_-1670862345",
+      "id": "20191202-160501_2127951182",
+      "dateCreated": "2019-12-02 16:05:01.555",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Dataframes",
+  "id": "2ETKNBPV1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

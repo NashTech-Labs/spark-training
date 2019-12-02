@@ -12,6 +12,8 @@ services:
       - "SPARK_LOCAL_IP=spark-master"
   spark-worker:
     image: spydernaz/spark-worker:latest
+    ports:
+      - "9091:8081"
     depends_on:
       - spark-master
     environment:
