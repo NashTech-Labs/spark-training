@@ -1,0 +1,198 @@
+{
+  "paragraphs": [
+    {
+      "text": "import scala.io.Source\nval TRAINING_HOME\u003d\"/Users/iramaraju/Desktop/Spark/exercises\"\nval datadir \u003d s\"$TRAINING_HOME/data/\"\nval outdir \u003d s\"$TRAINING_HOME/output\"\n\nval separator \u003d \"/\"\nval inputPath \u003d datadir + \"enron-spam-ham/ham100/*,\" + datadir + \"enron-spam-ham/spam100/*\"",
+      "user": "anonymous",
+      "dateUpdated": "2019-12-02 20:52:11.874",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "import scala.io.Source\nTRAINING_HOME: String \u003d /Users/iramaraju/Desktop/Spark/exercises\ndatadir: String \u003d /Users/iramaraju/Desktop/Spark/exercises/data/\noutdir: String \u003d /Users/iramaraju/Desktop/Spark/exercises/output\nseparator: String \u003d /\ninputPath: String \u003d /Users/iramaraju/Desktop/Spark/exercises/data/enron-spam-ham/ham100/*,/Users/iramaraju/Desktop/Spark/exercises/data/enron-spam-ham/spam100/*\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1575340849588_-1020281782",
+      "id": "20191202-204049_1430538145",
+      "dateCreated": "2019-12-02 20:40:49.588",
+      "dateStarted": "2019-12-02 20:52:11.886",
+      "dateFinished": "2019-12-02 20:52:12.178",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "val texts \u003d sc.union(\n  inputPath.split(\",\").toList.map(dir \u003d\u003e sc.wholeTextFiles(dir))\n)",
+      "user": "anonymous",
+      "dateUpdated": "2019-12-02 20:51:40.204",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "texts: org.apache.spark.rdd.RDD[(String, String)] \u003d UnionRDD[4] at union at \u003cconsole\u003e:28\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1575340996074_225546933",
+      "id": "20191202-204316_1850571034",
+      "dateCreated": "2019-12-02 20:43:16.074",
+      "dateStarted": "2019-12-02 20:51:40.216",
+      "dateFinished": "2019-12-02 20:51:41.864",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "val files_contents \u003d texts.map {\n  case (id, text) \u003d\u003e\n    val lastSep \u003d id.lastIndexOf(separator)  // Find the last directory separator in the path.\n    val id2 \u003d if (lastSep \u003c 0) id.trim else id.substring(lastSep+1, id.length).trim // Remove it and text before it.\n    val text2 \u003d text.trim.replaceAll(\"\"\"\\s*\\n\\s*\"\"\", \" \") // replace any \\n in the contents.\n    (id2, text2)\n}",
+      "user": "anonymous",
+      "dateUpdated": "2019-12-02 20:52:14.697",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "files_contents: org.apache.spark.rdd.RDD[(String, String)] \u003d MapPartitionsRDD[5] at map at \u003cconsole\u003e:29\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1575341490464_-281384928",
+      "id": "20191202-205130_644738718",
+      "dateCreated": "2019-12-02 20:51:30.464",
+      "dateStarted": "2019-12-02 20:52:14.708",
+      "dateFinished": "2019-12-02 20:52:15.259",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "val outputPath \u003d s\"$outdir/crawl-output\"\nval outputPathFile \u003d new java.io.File(outputPath)\nfiles_contents.saveAsTextFile(outputPath)",
+      "user": "anonymous",
+      "dateUpdated": "2019-12-02 20:53:07.958",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "outputPath: String \u003d /Users/iramaraju/Desktop/Spark/exercises/output/crawl-output\noutputPathFile: java.io.File \u003d /Users/iramaraju/Desktop/Spark/exercises/output/crawl-output\n"
+          }
+        ]
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "http://localhost:4040/jobs/job?id\u003d0"
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "apps": [],
+      "jobName": "paragraph_1575341516581_-346784650",
+      "id": "20191202-205156_302442824",
+      "dateCreated": "2019-12-02 20:51:56.581",
+      "dateStarted": "2019-12-02 20:53:07.969",
+      "dateFinished": "2019-12-02 20:53:14.829",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1575341571604_-1496134562",
+      "id": "20191202-205251_1516782951",
+      "dateCreated": "2019-12-02 20:52:51.604",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "exercises/ex4/crawl",
+  "id": "2EVGJ5JKE",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

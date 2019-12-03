@@ -1,0 +1,171 @@
+{
+  "paragraphs": [
+    {
+      "text": "  val home \u003d \"/Users/iramaraju/Desktop/Spark/exercises\"\n  val datadir \u003d s\"$home/data/\"\n  val outdir \u003d s\"$home/output\"",
+      "user": "anonymous",
+      "dateUpdated": "2019-12-02 21:00:56.112",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "home: String \u003d /Users/iramaraju/Desktop/Spark/exercises\ndatadir: String \u003d /Users/iramaraju/Desktop/Spark/exercises/data/\noutdir: String \u003d /Users/iramaraju/Desktop/Spark/exercises/output\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1575341929512_912102248",
+      "id": "20191202-205849_508631498",
+      "dateCreated": "2019-12-02 20:58:49.512",
+      "dateStarted": "2019-12-02 21:00:56.120",
+      "dateFinished": "2019-12-02 21:00:56.331",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "  /* ... new cell ... */\n\n  val inputHam  \u003d sc.textFile(s\"$datadir/enron-spam-ham/ham100\")\n  val inputSpam \u003d sc.textFile(s\"$datadir/enron-spam-ham/spam100\")\n  \n  val wc \u003d inputHam.union(inputSpam).\n    map(_.toLowerCase).\n    flatMap(_.split(\"\"\"\\W+\"\"\")).\n    map((_,1)).\n    reduceByKey(_+_)\n  \n  wc.saveAsTextFile(s\"$outdir/enron-wc-200-partitions\")",
+      "user": "anonymous",
+      "dateUpdated": "2019-12-02 21:01:01.693",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "inputHam: org.apache.spark.rdd.RDD[String] \u003d /Users/iramaraju/Desktop/Spark/exercises/data//enron-spam-ham/ham100 MapPartitionsRDD[8] at textFile at \u003cconsole\u003e:32\ninputSpam: org.apache.spark.rdd.RDD[String] \u003d /Users/iramaraju/Desktop/Spark/exercises/data//enron-spam-ham/spam100 MapPartitionsRDD[10] at textFile at \u003cconsole\u003e:33\nwc: org.apache.spark.rdd.RDD[(String, Int)] \u003d ShuffledRDD[15] at reduceByKey at \u003cconsole\u003e:39\n"
+          }
+        ]
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "http://localhost:4040/jobs/job?id\u003d1"
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "apps": [],
+      "jobName": "paragraph_1575341964307_85697695",
+      "id": "20191202-205924_462681192",
+      "dateCreated": "2019-12-02 20:59:24.307",
+      "dateStarted": "2019-12-02 21:01:01.701",
+      "dateFinished": "2019-12-02 21:01:11.424",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "  /* ... new cell ... */\n\n  val vc10 \u003d wc.coalesce(10)\n  vc10.saveAsTextFile(s\"$outdir/enron-wc-10-partitions\")",
+      "user": "anonymous",
+      "dateUpdated": "2019-12-02 21:02:09.695",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "vc10: org.apache.spark.rdd.RDD[(String, Int)] \u003d CoalescedRDD[17] at coalesce at \u003cconsole\u003e:31\n"
+          }
+        ]
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "http://localhost:4040/jobs/job?id\u003d2"
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "apps": [],
+      "jobName": "paragraph_1575341970486_-1968589378",
+      "id": "20191202-205930_1043364207",
+      "dateCreated": "2019-12-02 20:59:30.486",
+      "dateStarted": "2019-12-02 21:02:09.705",
+      "dateFinished": "2019-12-02 21:02:11.309",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1575342129695_-758365539",
+      "id": "20191202-210209_767864560",
+      "dateCreated": "2019-12-02 21:02:09.695",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "exercises/ex3/WordCountEnronEmails",
+  "id": "2EUXQJDWE",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

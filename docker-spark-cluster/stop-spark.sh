@@ -1,0 +1,1 @@
+docker stop docker-spark-cluster_spark-worker_1 && docker stop docker-spark-cluster_spark-master_1 && docker rm docker-spark-cluster_spark-worker_1 && docker rm docker-spark-cluster_spark-master_1 && docker stop zepp

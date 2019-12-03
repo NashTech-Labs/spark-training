@@ -1,0 +1,528 @@
+{
+  "paragraphs": [
+    {
+      "text": "import org.apache.spark.rdd.RDD\nval ints: RDD[Int] \u003d sc.parallelize(0 until 5)\nints.name \u003d \"ints\"\nval tupleVects: RDD[Vector[(Int,Int)]] \u003d ints.map {\n  i \u003d\u003e (0 until 6).map(j \u003d\u003e (i,j)).to[Vector]\n}\ntupleVects.name \u003d \"tupleVects\"\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-12-02 18:44:27.809",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "import org.apache.spark.rdd.RDD\nints: org.apache.spark.rdd.RDD[Int] \u003d ints ParallelCollectionRDD[12] at parallelize at \u003cconsole\u003e:26\nints.name: String \u003d ints\ntupleVects: org.apache.spark.rdd.RDD[Vector[(Int, Int)]] \u003d tupleVects MapPartitionsRDD[13] at map at \u003cconsole\u003e:28\ntupleVects.name: String \u003d tupleVects\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1575333637277_1849000949",
+      "id": "20191202-184037_1276887491",
+      "dateCreated": "2019-12-02 18:40:37.277",
+      "dateStarted": "2019-12-02 18:44:27.821",
+      "dateFinished": "2019-12-02 18:44:28.345",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "tupleVects.collect.foreach(println)",
+      "user": "anonymous",
+      "dateUpdated": "2019-12-02 18:49:44.593",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Vector((0,0), (0,1), (0,2), (0,3), (0,4), (0,5))\nVector((1,0), (1,1), (1,2), (1,3), (1,4), (1,5))\nVector((2,0), (2,1), (2,2), (2,3), (2,4), (2,5))\nVector((3,0), (3,1), (3,2), (3,3), (3,4), (3,5))\nVector((4,0), (4,1), (4,2), (4,3), (4,4), (4,5))\n"
+          }
+        ]
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "http://localhost:4040/jobs/job?id\u003d2"
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "apps": [],
+      "jobName": "paragraph_1575334166050_2059853456",
+      "id": "20191202-184926_1132872383",
+      "dateCreated": "2019-12-02 18:49:26.050",
+      "dateStarted": "2019-12-02 18:49:44.616",
+      "dateFinished": "2019-12-02 18:49:45.005",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "tupleVects.dependencies",
+      "user": "anonymous",
+      "dateUpdated": "2019-12-02 18:46:49.263",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "res4: Seq[org.apache.spark.Dependency[_]] \u003d List(org.apache.spark.OneToOneDependency@4a47b66b)\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1575333999103_116208256",
+      "id": "20191202-184639_1768678360",
+      "dateCreated": "2019-12-02 18:46:39.103",
+      "dateStarted": "2019-12-02 18:46:49.273",
+      "dateFinished": "2019-12-02 18:46:49.485",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "tupleVects.dependencies map (_.rdd.name)",
+      "user": "anonymous",
+      "dateUpdated": "2019-12-02 18:47:18.043",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "res6: Seq[String] \u003d List(ints)\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1575333677176_-1264507353",
+      "id": "20191202-184117_1683300242",
+      "dateCreated": "2019-12-02 18:41:17.176",
+      "dateStarted": "2019-12-02 18:47:18.053",
+      "dateFinished": "2019-12-02 18:47:18.291",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "val sums \u003d tupleVects map { vect \u003d\u003e\n  vect.foldLeft((0,0)) {\n    case ((currentIndex, sum), (i, j)) \u003d\u003e (i, sum + (i * 100) + j)\n  }\n}\nsums.name \u003d \"sums\"",
+      "user": "anonymous",
+      "dateUpdated": "2019-12-02 18:50:56.548",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "sums: org.apache.spark.rdd.RDD[(Int, Int)] \u003d sums MapPartitionsRDD[15] at map at \u003cconsole\u003e:28\nsums.name: String \u003d sums\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1575333691101_428623815",
+      "id": "20191202-184131_1249662350",
+      "dateCreated": "2019-12-02 18:41:31.101",
+      "dateStarted": "2019-12-02 18:50:56.561",
+      "dateFinished": "2019-12-02 18:50:56.865",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "sums.collect.foreach(println)",
+      "user": "anonymous",
+      "dateUpdated": "2019-12-02 19:00:25.270",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "(0,15)\n(1,615)\n(2,1215)\n(3,1815)\n(4,2415)\n"
+          }
+        ]
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "http://localhost:4040/jobs/job?id\u003d5"
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "apps": [],
+      "jobName": "paragraph_1575334241798_1153853909",
+      "id": "20191202-185041_456646938",
+      "dateCreated": "2019-12-02 18:50:41.798",
+      "dateStarted": "2019-12-02 19:00:25.280",
+      "dateFinished": "2019-12-02 19:00:25.538",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "val sumDeps1 \u003d sums.dependencies\nprintln(s\"sums.dependencies before checkpointing: # \u003d ${sumDeps1.size}\")\nprintln(s\"The dependencies names: ${sumDeps1 map (_.rdd.name)}\")",
+      "user": "anonymous",
+      "dateUpdated": "2019-12-02 18:48:03.664",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "sums.dependencies before checkpointing: # \u003d 1\nThe dependencies names: List(tupleVects)\nsumDeps1: Seq[org.apache.spark.Dependency[_]] \u003d List(org.apache.spark.OneToOneDependency@78ce5d4b)\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1575333701363_-1307744652",
+      "id": "20191202-184141_1038550918",
+      "dateCreated": "2019-12-02 18:41:41.363",
+      "dateStarted": "2019-12-02 18:48:03.674",
+      "dateFinished": "2019-12-02 18:48:03.946",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "val checkpointDir \u003d s\"/Users/iramaraju/dev/software/zeppelin-0.8.1-bin-netinst/data\"\n\nsc.setCheckpointDir(checkpointDir)\nsums.checkpoint",
+      "user": "anonymous",
+      "dateUpdated": "2019-12-02 19:00:01.140",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "checkpointDir: String \u003d /Users/iramaraju/dev/software/zeppelin-0.8.1-bin-netinst/data\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1575333756962_-432251763",
+      "id": "20191202-184236_1616473471",
+      "dateCreated": "2019-12-02 18:42:36.963",
+      "dateStarted": "2019-12-02 19:00:01.151",
+      "dateFinished": "2019-12-02 19:00:01.337",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "println(s\"sums is checkpointed? ${sums.isCheckpointed}\")\nprintln(s\"sums\u0027 checkpoint file: ${sums.getCheckpointFile}\")",
+      "user": "anonymous",
+      "dateUpdated": "2019-12-02 19:00:04.278",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "sums is checkpointed? false\nsums\u0027 checkpoint file: None\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1575333766760_753904893",
+      "id": "20191202-184246_1889622497",
+      "dateCreated": "2019-12-02 18:42:46.760",
+      "dateStarted": "2019-12-02 19:00:04.288",
+      "dateFinished": "2019-12-02 19:00:04.449",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "sums.cache\n\nsums foreach println",
+      "user": "anonymous",
+      "dateUpdated": "2019-12-02 19:00:29.482",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "http://localhost:4040/jobs/job?id\u003d6"
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "apps": [],
+      "jobName": "paragraph_1575333779205_1826735632",
+      "id": "20191202-184259_1454874098",
+      "dateCreated": "2019-12-02 18:42:59.205",
+      "dateStarted": "2019-12-02 19:00:29.492",
+      "dateFinished": "2019-12-02 19:00:29.942",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "val sumDeps2 \u003d sums.dependencies\nprintln(s\"sums.dependencies after checkpointing: # \u003d ${sumDeps2.size}\")\nprintln(s\"The dependencies names: ${sumDeps2 map (_.rdd.name)}\")",
+      "user": "anonymous",
+      "dateUpdated": "2019-12-02 19:00:39.277",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "sums.dependencies after checkpointing: # \u003d 1\nThe dependencies names: List(tupleVects)\nsumDeps2: Seq[org.apache.spark.Dependency[_]] \u003d List(org.apache.spark.OneToOneDependency@5170aca3)\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1575333782577_-371075300",
+      "id": "20191202-184302_2048372145",
+      "dateCreated": "2019-12-02 18:43:02.577",
+      "dateStarted": "2019-12-02 19:00:39.286",
+      "dateFinished": "2019-12-02 19:00:39.514",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "val partitions \u003d sums.partitions\nprintln(s\" for ${partitions.size} partitions:\")\npartitions foreach { p \u003d\u003e\n  println(s\"Partition #${p.index}: preferred locations: ${sums.preferredLocations(p)}\")\n}",
+      "user": "anonymous",
+      "dateUpdated": "2019-12-02 19:00:53.790",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": " for 2 partitions:\nPartition #0: preferred locations: List()\nPartition #1: preferred locations: List()\npartitions: Array[org.apache.spark.Partition] \u003d Array(org.apache.spark.rdd.ParallelCollectionPartition@87d, org.apache.spark.rdd.ParallelCollectionPartition@87e)\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1575333812392_-954627072",
+      "id": "20191202-184332_755449455",
+      "dateCreated": "2019-12-02 18:43:32.392",
+      "dateStarted": "2019-12-02 19:00:53.802",
+      "dateFinished": "2019-12-02 19:00:53.991",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1575334853790_127419427",
+      "id": "20191202-190053_1140724669",
+      "dateCreated": "2019-12-02 19:00:53.790",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "exercises/ex3",
+  "id": "2EUX7EUDU",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

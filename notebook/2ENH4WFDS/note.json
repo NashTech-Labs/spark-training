@@ -1,0 +1,326 @@
+{
+  "paragraphs": [
+    {
+      "text": "val datadir \u003d \"/Users/iramaraju/dev/projects/knoldus/spark-training/exercises/data\"\nval input \u003d sc.textFile(s\"${datadir}/all-shakespeare.txt\")\ndef lower(string: String) \u003d string.toLowerCase\n\n// The following return the same results:\ninput.map(lower)\ninput.map(line \u003d\u003e lower(line))",
+      "user": "anonymous",
+      "dateUpdated": "2019-12-02 18:15:07.363",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "datadir: String \u003d /Users/iramaraju/dev/projects/knoldus/spark-training/exercises/data\ninput: org.apache.spark.rdd.RDD[String] \u003d /Users/iramaraju/dev/projects/knoldus/spark-training/exercises/data/all-shakespeare.txt MapPartitionsRDD[5] at textFile at \u003cconsole\u003e:30\nlower: (string: String)String\nres2: org.apache.spark.rdd.RDD[String] \u003d MapPartitionsRDD[7] at map at \u003cconsole\u003e:37\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1570142028339_-2145902839",
+      "id": "20191003-183348_204184363",
+      "dateCreated": "2019-10-03 18:33:48.339",
+      "dateStarted": "2019-12-02 18:15:07.376",
+      "dateFinished": "2019-12-02 18:15:07.766",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "input",
+      "user": "anonymous",
+      "dateUpdated": "2019-12-02 18:15:13.720",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "res3: org.apache.spark.rdd.RDD[String] \u003d /Users/iramaraju/dev/projects/knoldus/spark-training/exercises/data/all-shakespeare.txt MapPartitionsRDD[5] at textFile at \u003cconsole\u003e:30\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1570142114479_-1479503049",
+      "id": "20191003-183514_1005745455",
+      "dateCreated": "2019-10-03 18:35:14.479",
+      "dateStarted": "2019-12-02 18:15:13.732",
+      "dateFinished": "2019-12-02 18:15:13.944",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "val lines \u003d input.map(line \u003d\u003e line.toLowerCase)",
+      "user": "anonymous",
+      "dateUpdated": "2019-12-02 18:15:14.889",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "lines: org.apache.spark.rdd.RDD[String] \u003d MapPartitionsRDD[8] at map at \u003cconsole\u003e:25\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1570142184974_-1171049763",
+      "id": "20191003-183624_1605894511",
+      "dateCreated": "2019-10-03 18:36:24.974",
+      "dateStarted": "2019-12-02 18:15:14.900",
+      "dateFinished": "2019-12-02 18:15:15.138",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "lines.toDebugString\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-12-02 18:15:16.386",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "res4: String \u003d\n(2) MapPartitionsRDD[8] at map at \u003cconsole\u003e:25 []\n |  /Users/iramaraju/dev/projects/knoldus/spark-training/exercises/data/all-shakespeare.txt MapPartitionsRDD[5] at textFile at \u003cconsole\u003e:30 []\n |  /Users/iramaraju/dev/projects/knoldus/spark-training/exercises/data/all-shakespeare.txt HadoopRDD[4] at textFile at \u003cconsole\u003e:30 []\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1570142199747_-202331747",
+      "id": "20191003-183639_859221361",
+      "dateCreated": "2019-10-03 18:36:39.747",
+      "dateStarted": "2019-12-02 18:15:16.397",
+      "dateFinished": "2019-12-02 18:15:16.654",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "val wordCount \u003d lines.flatMap(line \u003d\u003e line.split(\"\"\"\\W+\"\"\"))\n                     .groupBy(word \u003d\u003e word)\n                     .mapValues(seq \u003d\u003e seq.size)\n                     .cache()",
+      "user": "anonymous",
+      "dateUpdated": "2019-12-02 18:15:19.052",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "wordCount: org.apache.spark.rdd.RDD[(String, Int)] \u003d MapPartitionsRDD[12] at mapValues at \u003cconsole\u003e:27\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1570142214655_-1434767407",
+      "id": "20191003-183654_1112677155",
+      "dateCreated": "2019-10-03 18:36:54.655",
+      "dateStarted": "2019-12-02 18:15:19.063",
+      "dateFinished": "2019-12-02 18:15:19.699",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "wordCount.take(100).foreach(println)",
+      "user": "anonymous",
+      "dateUpdated": "2019-12-02 18:15:20.953",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "(pinnace,3)\n(bone,21)\n(lug,3)\n(vailing,3)\n(bombast,4)\n(gaping,11)\n(hem,10)\n(forsooth,48)\n(stinks,1)\n(been,738)\n(fuller,2)\n(jade,16)\n(pig,11)\n(jove,98)\n(crying,36)\n(countervail,3)\n(breath,238)\n(battering,3)\n(contemptible,5)\n(swain,24)\n(clients,3)\n(continuantly,1)\n(tongued,11)\n(fowl,16)\n(accomplished,7)\n(afterward,8)\n(andirons,1)\n(supporter,2)\n(unfelt,4)\n(inquisition,3)\n(incertainties,1)\n(stern,31)\n(lightens,7)\n(snuffing,1)\n(espoused,4)\n(tush,24)\n(burghers,2)\n(coated,4)\n(robin,38)\n(balk,3)\n(erected,3)\n(aces,1)\n(unprevented,1)\n(misapplied,1)\n(regina,1)\n(dangers,21)\n(ulcerous,3)\n(adultery,7)\n(glares,2)\n(descending,3)\n(seventy,3)\n(heroic,1)\n(antioch,12)\n(goodliest,3)\n(sanguis,1)\n(converted,7)\n(erroneous,2)\n(astray,2)\n(lunacies,1)\n(slimy,2)\n(weepingly,1)\n(rolled,1)\n(didst,189)\n(aspiration,1)\n(alexas,35)\n(wheresoe,7)\n(superfluity,4)\n(profaneness,1)\n(lapsing,1)\n(whit,21)\n(wales,48)\n(mop,2)\n(win,127)\n(outlaw,35)\n(comparing,3)\n(dolphin,8)\n(point,157)\n(strut,5)\n(worshippers,2)\n(pined,5)\n(cannibal,1)\n(ay,777)\n(giddiness,2)\n(chiders,1)\n(enlarge,8)\n(fleering,1)\n(fail,67)\n(table,61)\n(lozel,2)\n(right,368)\n(trumpets,81)\n(disme,1)\n(parmaceti,1)\n(unchanging,1)\n(reechy,3)\n(escheator,1)\n(instigate,2)\n(vied,2)\n(superscription,2)\n(soars,1)\n"
+          }
+        ]
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "http://localhost:4040/jobs/job?id\u003d0"
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "apps": [],
+      "jobName": "paragraph_1570142342700_-1962877819",
+      "id": "20191003-183902_1591841645",
+      "dateCreated": "2019-10-03 18:39:02.700",
+      "dateStarted": "2019-12-02 18:15:20.964",
+      "dateFinished": "2019-12-02 18:15:23.708",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "wordCount.count()",
+      "user": "anonymous",
+      "dateUpdated": "2019-12-02 18:18:24.102",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "res6: Long \u003d 24419\n"
+          }
+        ]
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "http://localhost:4040/jobs/job?id\u003d1"
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "apps": [],
+      "jobName": "paragraph_1570142450535_-1789293464",
+      "id": "20191003-184050_890817024",
+      "dateCreated": "2019-10-03 18:40:50.535",
+      "dateStarted": "2019-12-02 18:18:24.121",
+      "dateFinished": "2019-12-02 18:18:24.729",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1575332304102_-480556376",
+      "id": "20191202-181824_1585929634",
+      "dateCreated": "2019-12-02 18:18:24.102",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "exercises/ex1",
+  "id": "2ENH4WFDS",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}
